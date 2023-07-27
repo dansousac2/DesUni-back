@@ -22,7 +22,7 @@ public class CollaboratorsAndItems {
 	private String collaboratorId;
 	
 	@Column(name = "ITEM_ID", nullable = false)
-	private Integer ItemsId;
+	private Integer itemId;
 	
 	@Column(name = "BROUGHT_ITEM_TO_BREAKFAST", nullable = false)
 	private boolean broughtItem;
@@ -48,11 +48,11 @@ public class CollaboratorsAndItems {
 	public void setCollaboratorId(String collaboratorId) {
 		this.collaboratorId = collaboratorId;
 	}
-	public Integer getItemsId() {
-		return ItemsId;
+	public Integer getItemId() {
+		return itemId;
 	}
-	public void setItemsId(Integer itemsId) {
-		ItemsId = itemsId;
+	public void setItemId(Integer itemId) {
+		this.itemId = itemId;
 	}
 
 	public boolean isBroughtItem() {
@@ -65,7 +65,7 @@ public class CollaboratorsAndItems {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(ItemsId, breakFastId, broughtItem, collaboratorId, id);
+		return Objects.hash(itemId, breakFastId, broughtItem, collaboratorId, id);
 	}
 
 	@Override
@@ -77,7 +77,7 @@ public class CollaboratorsAndItems {
 		if (getClass() != obj.getClass())
 			return false;
 		CollaboratorsAndItems other = (CollaboratorsAndItems) obj;
-		return Objects.equals(ItemsId, other.ItemsId) && Objects.equals(breakFastId, other.breakFastId)
+		return Objects.equals(itemId, other.itemId) && Objects.equals(breakFastId, other.breakFastId)
 				&& broughtItem == other.broughtItem && Objects.equals(collaboratorId, other.collaboratorId)
 				&& Objects.equals(id, other.id);
 	}

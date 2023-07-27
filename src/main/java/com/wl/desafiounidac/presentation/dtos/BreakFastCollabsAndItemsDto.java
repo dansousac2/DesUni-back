@@ -10,6 +10,9 @@ public class BreakFastCollabsAndItemsDto {
 	private BreakFast breakFast;
 	private List<CollaboratorsAndItems> collabsAndItems;
 	
+	public BreakFastCollabsAndItemsDto() {
+	}
+	
 	public BreakFastCollabsAndItemsDto(BreakFast breakFast, List<CollaboratorsAndItems> collabsAndItems) {
 		this.breakFast = breakFast;
 		this.collabsAndItems = collabsAndItems;

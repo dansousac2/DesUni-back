@@ -8,7 +8,6 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 
 import com.wl.desafiounidac.model.entity.BreakFast;
-import com.wl.desafiounidac.model.entity.CollaboratorsAndItems;
 
 import jakarta.transaction.Transactional;
 
@@ -62,5 +61,12 @@ public interface BreakFastRepository extends JpaRepository<BreakFast, String>{
 	@Query(nativeQuery = true, value = "SELECT COUNT(*) FROM collaborators_and_items WHERE item_id = :itemId "
 			+ "AND breakfast_id = :breakFastId")
 	int isItemInCollabAndItemTable(Integer itemId, Integer breakFastId);
+
+	//TODO
+	@Transactional
+	@Modifying
+	@Query(nativeQuery = true, value = "UPDATE collaborators_and_items SET brought_item_to_breakfast = :broughtItem "
+			+ "WHERE breakfast_id = :breakFastId AND collaborator_id = :collaboratorId AND item_id = :itemId")
+	void confirmeItemCollaboration(Integer breakFastId, String collaboratorId, Integer itemId, boolean broughtItem);
 
 }

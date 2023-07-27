@@ -20,7 +20,6 @@ import com.wl.desafiounidac.model.entity.BreakFast;
 import com.wl.desafiounidac.model.entity.CollaboratorsAndItems;
 import com.wl.desafiounidac.presentation.dtos.BreakFastCollabsAndItemsDto;
 import com.wl.desafiounidac.presentation.dtos.BreakFastDto;
-import com.wl.desafiounidac.presentation.exceptions.CollaboratorNotFoundException;
 
 import jakarta.validation.Valid;
 
@@ -92,6 +91,15 @@ public class BreakFastController {
 		}
 	}
 	
-	
-	
+	@PutMapping("/confirmeitemcolaboration")
+	public ResponseEntity confirmeItemCollaboration(@RequestBody BreakFastCollabsAndItemsDto dto) {
+		try {
+			service.confirmeItemCollaboration(dto, collabService, itemService);
+			
+			return ResponseEntity.ok().build();
+			
+		} catch (Exception e) {
+			return ResponseEntity.badRequest().body(e.getMessage());
+		}
+	}
 }
