@@ -57,7 +57,7 @@ public class ItemService {
 			throw new ItemAlreadyExists("Item já encontra-se cadastrado");
 		}
 		if(!existsSequence()) {
-			repository.createSequence(SeqSql.SEQ_ITEM.toString());
+			repository.createSequence();
 		}
 		
 		repository.createItem(name, SeqSql.SEQ_ITEM.toString());

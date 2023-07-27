@@ -22,11 +22,13 @@ public interface ItemRepository extends JpaRepository<Item, Integer>{
 	int existsItemByName(String name);
 	
 	@Query(nativeQuery = true, value = "SELECT count(*) FROM information_schema.sequences "
-			+ "WHERE sequence_name = :name")
+			+ "WHERE sequence_name = :name AND sequence_catalog = 'CoffeeMorning'")
 	int existsSequenceByName(String name);
 	
-	@Query(nativeQuery = true, value = "CREATE SEQUENCE :name START WITH 1")
-	void createSequence(String name);
+	@Transactional
+	@Modifying
+	@Query(nativeQuery = true, value = "CREATE SEQUENCE seq_item START WITH 1")
+	void createSequence();
 	
 	// neste ponto uma sequence no DB deve ter sido criada posteriormente ou já existir
 	@Transactional

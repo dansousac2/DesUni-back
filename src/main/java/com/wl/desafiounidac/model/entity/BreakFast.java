@@ -1,15 +1,13 @@
 package com.wl.desafiounidac.model.entity;
 
 import java.time.LocalDate;
-import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -22,22 +20,6 @@ public class BreakFast {
 	
 	@Column(name = "BREAKFAST_DATE", nullable = false)
 	private LocalDate date;
-	
-	@ManyToMany()
-	@JoinTable(
-			name = "BREAKFAST_ITENS",
-			joinColumns = @JoinColumn(name = "BREAKFAST_ID"),
-			inverseJoinColumns = @JoinColumn(name = "ITEM_ID")
-	)
-	private List<Item> itens;
-	
-	@ManyToMany
-	@JoinTable(
-			name = "BREAKFAST_COLLABORATOR",
-			joinColumns = @JoinColumn(name = "BREAKFAST_ID"),
-			inverseJoinColumns = @JoinColumn(name = "COLLABORATOR_ID")
-			)
-	private List<Collaborator> collaborators;
 	
 	public BreakFast() {
 	}
@@ -60,7 +42,7 @@ public class BreakFast {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(collaborators, date, id, itens);
+		return Objects.hash(date, id);
 	}
 
 	@Override
@@ -72,8 +54,7 @@ public class BreakFast {
 		if (getClass() != obj.getClass())
 			return false;
 		BreakFast other = (BreakFast) obj;
-		return Objects.equals(collaborators, other.collaborators) && Objects.equals(date, other.date)
-				&& Objects.equals(id, other.id) && Objects.equals(itens, other.itens);
+		return Objects.equals(date, other.date) && Objects.equals(id, other.id);
 	}
 
 }
