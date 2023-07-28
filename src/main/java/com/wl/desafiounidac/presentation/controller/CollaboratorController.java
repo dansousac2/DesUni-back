@@ -39,7 +39,7 @@ public class CollaboratorController {
 		}
 	}
 	
-	@GetMapping("/usingcpf")
+	@PostMapping("/usingcpf")
 	public ResponseEntity getCollaboratorByCpf(@RequestBody @Valid CollaboratorDtoCpf dto) {
 		try {
 			Collaborator collaborator = service.getCollaboratorByCpf(dto.getCpf());
@@ -75,7 +75,7 @@ public class CollaboratorController {
 		}
 	}
 	
-	@DeleteMapping
+	@PostMapping("/removeCollab")
 	public ResponseEntity removeCollaborator(@RequestBody @Valid CollaboratorDtoCpf dto) {
 		try {
 			service.removeCollaborator(dto);
